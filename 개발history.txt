@@ -1,0 +1,83 @@
+[VS 개발 HISTORY]
+
+## PROJECT : SKAI_KSSOM_Tester
+
+--------------[2025.07.01]--------------------------------------------
+* 주차정보 전달 추가 (배열 사용)
+
+--------------[2025.06.30]--------------------------------------------
+* 상태요청 모니터링
+* 일괄소등, 점등 제어
+* 가스열림, 가스차단 제어
+* 가스차단 시나리오
+* 엘리베이터 호출 시나리오
+* 날씨정보 전달
+* 시간 정보 전달
+* 택배/방문자/공지사항 전달
+
+* 주차정보 전달 --> 아직 미완
+--------------[2025.04.24]--------------------------------------------
+* Rx data 표시 기능
+- OnFormMainSubThread : 여기에서 Rx data가 richTextBox에 표시 됨
+- StartFormMainSubThread : OnFormMainSubThread 참조
+- FormMain : StartFormMainSubThread 참조
+- 즉 FormMain > StartFormMainSubThread > OnFormMainSubThread
+  순서로 참조 함 
+
+- 특성요구 응답, 상태요구 응답 데이터를 GUI 화면에 표시하는 기능을 추가하려면  
+  OnFormMainSubThread 여기 안에 넣으면 됨
+  (별도 함수 추가 예정 : )
+
+- rx data 변수
+  : this.m_Communication_KS.ReceiveData
+  : OnDataReceived method에서 string 형태로 저장 됨
+    this.ReceiveData += subBuffer.ToString("X2") + " ";
+    이 method는 "public class Communication_KS" class 에서 정의 됨	
+  : (선언) public string ReceiveData
+  
+* 
+- this.m_Communication_KS.ReceiveData 요 변수 (sting)을
+  int 형 변수로 변환시켜야 함수
+  그리고 int형 변수를 parsing 하여 화면에 표시해야 함
+  
+  
+  
+  
+chatGPT -------------------------------------------------------------
+C#에서 string형 변수를 int형 변수로 변환하는 방법은 여러 가지가 있습니다. 상황에 따라 적절한 방법을 선택하면 됩니다:
+
+1. int.Parse() 사용
+문자열이 반드시 숫자로 변환 가능한 경우에 사용합니다.
+예외 발생 가능 → 문자열이 숫자가 아닐 경우 FormatException 발생.
+
+csharp
+복사
+편집
+string str = "123";
+int number = int.Parse(str);
+Console.WriteLine(number);  // 출력: 123
+2. Convert.ToInt32() 사용
+null 처리에 더 유연합니다. null이면 0 반환.
+예외 발생 가능 → 형식이 잘못된 경우.
+
+csharp
+복사
+편집
+string str = "123";
+int number = Convert.ToInt32(str);
+Console.WriteLine(number);  // 출력: 123
+3. int.TryParse() 사용 (가장 안전한 방식)
+예외 없이 변환 시도하고 성공 여부를 반환합니다. 실패 시 0 또는 지정한 값으로 초기화 가능.
+
+csharp
+복사
+편집
+string str = "123";
+int number;
+bool success = int.TryParse(str, out number);
+
+if (success)
+    Console.WriteLine(number);  // 출력: 123
+else
+    Console.WriteLine("변환 실패");  
+	-------------------------------------------------------------
