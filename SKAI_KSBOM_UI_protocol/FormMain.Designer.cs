@@ -74,36 +74,6 @@
             groupBox4 = new GroupBox();
             button_BatchOn = new Button();
             button_BatchOff = new Button();
-           // checkBoxStandby4Auto = new CheckBox();
-           // checkBoxStandby4Manual = new CheckBox();
-           // checkBoxStandby3Auto = new CheckBox();
-            //checkBoxStandby3Manual = new CheckBox();
-            //checkBoxStandby2Auto = new CheckBox();
-            //checkBoxStandby2Manual = new CheckBox();
-            //checkBoxStandby1Auto = new CheckBox();
-            //checkBoxStandby1Manual = new CheckBox();
-            //pictureBoxStandby4 = new PictureBox();
-            //pictureBoxStandby3 = new PictureBox();
-            //pictureBoxStandby2 = new PictureBox();
-            //pictureBoxStandby1 = new PictureBox();
-            //pictureBoxLight6 = new PictureBox();
-            //pictureBoxLight5 = new PictureBox();
-            //pictureBoxLight4 = new PictureBox();
-            //pictureBoxLight3 = new PictureBox();
-            //p//ictureBoxLight2 = new PictureBox();
-            //pictureBoxLight1 = new PictureBox();
-            //textBoxSwitchStandbyCount = new TextBox();
-            //textBoxSwitchLightCount = new TextBox();
-            //labelSwitchLightCount = new Label();
-            //labelSwitchStandbyCount = new Label();
-            //groupBoxTestVector = new GroupBox();
-            //checkBoxTestVectorFormUse = new CheckBox();
-            //textBoxTestVectorTest = new TextBox();
-            //textBoxTestVectorVer = new TextBox();
-            //textBoxTestVectorGroup = new TextBox();
-            //labelTestVectorTest = new Label();
-            //labelTestVectorVer = new Label();
-            //labelTestVectorGroup = new Label();
             textBoxCommunication = new TextBox();
             groupBox5 = new GroupBox();
             button_GasFail = new Button();
@@ -196,19 +166,6 @@
             groupBoxExecution.SuspendLayout();
             groupBoxSwitch.SuspendLayout();
             groupBox4.SuspendLayout();
-            /*
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight1).BeginInit();
-            */
-            //groupBoxTestVector.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -223,12 +180,12 @@
             richTextBoxLog.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBoxLog.BackColor = Color.Black;
             richTextBoxLog.ForeColor = Color.White;
-            richTextBoxLog.Location = new Point(708, 40);
+            richTextBoxLog.Location = new Point(281, 9);
             richTextBoxLog.Margin = new Padding(2);
             richTextBoxLog.MinimumSize = new Size(481, 464);
             richTextBoxLog.Name = "richTextBoxLog";
             richTextBoxLog.ReadOnly = true;
-            richTextBoxLog.Size = new Size(481, 554);
+            richTextBoxLog.Size = new Size(911, 554);
             richTextBoxLog.TabIndex = 0;
             richTextBoxLog.Text = "";
             richTextBoxLog.KeyDown += Execution_KeyDown;
@@ -264,6 +221,7 @@
             groupBox10.TabIndex = 224;
             groupBox10.TabStop = false;
             groupBox10.Text = "택배/방문자/공지사항 전달";
+            groupBox10.Visible = false;
             // 
             // checkBox_Notice
             // 
@@ -327,6 +285,7 @@
             groupBox3.TabIndex = 220;
             groupBox3.TabStop = false;
             groupBox3.Text = "상태 모니터링";
+            groupBox3.Visible = false;
             // 
             // checkBoxGasClose
             // 
@@ -491,7 +450,6 @@
             comboBoxProtocols.Name = "comboBoxProtocols";
             comboBoxProtocols.Size = new Size(100, 23);
             comboBoxProtocols.TabIndex = 132;
-            //comboBoxProtocols.DropDownClosed += Protocols_Click;
             comboBoxProtocols.KeyDown += Protocols_KeyDown;
             // 
             // checkBoxLight
@@ -506,8 +464,6 @@
             checkBoxLight.TabIndex = 133;
             checkBoxLight.Text = "생활정보기";
             checkBoxLight.UseVisualStyleBackColor = true;
-            //checkBoxLight.Click += Protocols_Click;
-            //checkBoxLight.KeyDown += Protocols_KeyDown;
             // 
             // groupBoxCommunication
             // 
@@ -712,7 +668,6 @@
             textBoxSwitchID.TabIndex = 112;
             textBoxSwitchID.Text = "01";
             textBoxSwitchID.TextAlign = HorizontalAlignment.Center;
-            //textBoxSwitchID.KeyDown += Switch_KeyDown;
             textBoxSwitchID.Leave += TestVectorSystem_TextChanged;
             // 
             // labelSwitchID
@@ -729,12 +684,13 @@
             // 
             groupBox4.Controls.Add(button_BatchOn);
             groupBox4.Controls.Add(button_BatchOff);
-            groupBox4.Location = new Point(292, 12);
+            groupBox4.Location = new Point(1046, 9);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(181, 58);
             groupBox4.TabIndex = 220;
             groupBox4.TabStop = false;
             groupBox4.Text = "일괄제어";
+            groupBox4.Visible = false;
             // 
             // button_BatchOn
             // 
@@ -758,375 +714,6 @@
             button_BatchOff.UseVisualStyleBackColor = true;
             button_BatchOff.Click += Homenet_Tx_Button_Click;
             // 
-            // checkBoxStandby4Auto
-            // 
-            /*
-            checkBoxStandby4Auto.AutoSize = true;
-            checkBoxStandby4Auto.Location = new Point(1005, 450);
-            checkBoxStandby4Auto.Margin = new Padding(2);
-            checkBoxStandby4Auto.Name = "checkBoxStandby4Auto";
-            checkBoxStandby4Auto.Size = new Size(15, 14);
-            checkBoxStandby4Auto.TabIndex = 218;
-            checkBoxStandby4Auto.UseVisualStyleBackColor = true;
-            checkBoxStandby4Auto.Visible = false;
-            checkBoxStandby4Auto.Click += Switch_Click;
-            // 
-            // checkBoxStandby4Manual
-            // 
-            checkBoxStandby4Manual.AutoSize = true;
-            checkBoxStandby4Manual.Checked = true;
-            checkBoxStandby4Manual.CheckState = CheckState.Checked;
-            checkBoxStandby4Manual.Location = new Point(990, 450);
-            checkBoxStandby4Manual.Margin = new Padding(2);
-            checkBoxStandby4Manual.Name = "checkBoxStandby4Manual";
-            checkBoxStandby4Manual.Size = new Size(15, 14);
-            checkBoxStandby4Manual.TabIndex = 217;
-            checkBoxStandby4Manual.UseVisualStyleBackColor = true;
-            checkBoxStandby4Manual.Visible = false;
-            checkBoxStandby4Manual.Click += Switch_Click;
-            // 
-            // checkBoxStandby3Auto
-            // 
-            checkBoxStandby3Auto.AutoSize = true;
-            checkBoxStandby3Auto.Location = new Point(969, 450);
-            checkBoxStandby3Auto.Margin = new Padding(2);
-            checkBoxStandby3Auto.Name = "checkBoxStandby3Auto";
-            checkBoxStandby3Auto.Size = new Size(15, 14);
-            checkBoxStandby3Auto.TabIndex = 216;
-            checkBoxStandby3Auto.UseVisualStyleBackColor = true;
-            checkBoxStandby3Auto.Visible = false;
-            checkBoxStandby3Auto.Click += Switch_Click;
-            // 
-            // checkBoxStandby3Manual
-            // 
-            checkBoxStandby3Manual.AutoSize = true;
-            checkBoxStandby3Manual.Checked = true;
-            checkBoxStandby3Manual.CheckState = CheckState.Checked;
-            checkBoxStandby3Manual.Location = new Point(954, 450);
-            checkBoxStandby3Manual.Margin = new Padding(2);
-            checkBoxStandby3Manual.Name = "checkBoxStandby3Manual";
-            checkBoxStandby3Manual.Size = new Size(15, 14);
-            checkBoxStandby3Manual.TabIndex = 215;
-            checkBoxStandby3Manual.UseVisualStyleBackColor = true;
-            checkBoxStandby3Manual.Visible = false;
-            checkBoxStandby3Manual.Click += Switch_Click;
-            // 
-            // checkBoxStandby2Auto
-            // 
-            checkBoxStandby2Auto.AutoSize = true;
-            checkBoxStandby2Auto.Location = new Point(933, 450);
-            checkBoxStandby2Auto.Margin = new Padding(2);
-            checkBoxStandby2Auto.Name = "checkBoxStandby2Auto";
-            checkBoxStandby2Auto.Size = new Size(15, 14);
-            checkBoxStandby2Auto.TabIndex = 214;
-            checkBoxStandby2Auto.UseVisualStyleBackColor = true;
-            checkBoxStandby2Auto.Visible = false;
-            checkBoxStandby2Auto.Click += Switch_Click;
-            // 
-            // checkBoxStandby2Manual
-            // 
-            checkBoxStandby2Manual.AutoSize = true;
-            checkBoxStandby2Manual.Checked = true;
-            checkBoxStandby2Manual.CheckState = CheckState.Checked;
-            checkBoxStandby2Manual.Location = new Point(918, 450);
-            checkBoxStandby2Manual.Margin = new Padding(2);
-            checkBoxStandby2Manual.Name = "checkBoxStandby2Manual";
-            checkBoxStandby2Manual.Size = new Size(15, 14);
-            checkBoxStandby2Manual.TabIndex = 213;
-            checkBoxStandby2Manual.UseVisualStyleBackColor = true;
-            checkBoxStandby2Manual.Visible = false;
-            checkBoxStandby2Manual.Click += Switch_Click;
-            // 
-            // checkBoxStandby1Auto
-            // 
-            checkBoxStandby1Auto.AutoSize = true;
-            checkBoxStandby1Auto.Location = new Point(897, 450);
-            checkBoxStandby1Auto.Margin = new Padding(2);
-            checkBoxStandby1Auto.Name = "checkBoxStandby1Auto";
-            checkBoxStandby1Auto.Size = new Size(15, 14);
-            checkBoxStandby1Auto.TabIndex = 212;
-            checkBoxStandby1Auto.UseVisualStyleBackColor = true;
-            checkBoxStandby1Auto.Visible = false;
-            checkBoxStandby1Auto.Click += Switch_Click;
-            // 
-            // checkBoxStandby1Manual
-            // 
-            checkBoxStandby1Manual.AutoSize = true;
-            checkBoxStandby1Manual.Checked = true;
-            checkBoxStandby1Manual.CheckState = CheckState.Checked;
-            checkBoxStandby1Manual.Location = new Point(882, 450);
-            checkBoxStandby1Manual.Margin = new Padding(2);
-            checkBoxStandby1Manual.Name = "checkBoxStandby1Manual";
-            checkBoxStandby1Manual.Size = new Size(15, 14);
-            checkBoxStandby1Manual.TabIndex = 211;
-            checkBoxStandby1Manual.UseVisualStyleBackColor = true;
-            checkBoxStandby1Manual.Visible = false;
-            checkBoxStandby1Manual.Click += Switch_Click;
-            // 
-            // pictureBoxStandby4
-            // 
-            pictureBoxStandby4.Image = Properties.Resources.StandbyOff_30;
-            pictureBoxStandby4.Location = new Point(990, 416);
-            pictureBoxStandby4.Name = "pictureBoxStandby4";
-            pictureBoxStandby4.Size = new Size(30, 30);
-            pictureBoxStandby4.TabIndex = 41;
-            pictureBoxStandby4.TabStop = false;
-            pictureBoxStandby4.Visible = false;
-            pictureBoxStandby4.Click += Switch_Click;
-            // 
-            // pictureBoxStandby3
-            // 
-            pictureBoxStandby3.Image = Properties.Resources.StandbyOff_30;
-            pictureBoxStandby3.Location = new Point(954, 416);
-            pictureBoxStandby3.Name = "pictureBoxStandby3";
-            pictureBoxStandby3.Size = new Size(30, 30);
-            pictureBoxStandby3.TabIndex = 40;
-            pictureBoxStandby3.TabStop = false;
-            pictureBoxStandby3.Visible = false;
-            pictureBoxStandby3.Click += Switch_Click;
-            // 
-            // pictureBoxStandby2
-            // 
-            pictureBoxStandby2.Image = Properties.Resources.StandbyOff_30;
-            pictureBoxStandby2.Location = new Point(918, 416);
-            pictureBoxStandby2.Name = "pictureBoxStandby2";
-            pictureBoxStandby2.Size = new Size(30, 30);
-            pictureBoxStandby2.TabIndex = 39;
-            pictureBoxStandby2.TabStop = false;
-            pictureBoxStandby2.Visible = false;
-            pictureBoxStandby2.Click += Switch_Click;
-            // 
-            // pictureBoxStandby1
-            // 
-            pictureBoxStandby1.Image = Properties.Resources.StandbyOff_30;
-            pictureBoxStandby1.Location = new Point(882, 416);
-            pictureBoxStandby1.Name = "pictureBoxStandby1";
-            pictureBoxStandby1.Size = new Size(30, 30);
-            pictureBoxStandby1.TabIndex = 38;
-            pictureBoxStandby1.TabStop = false;
-            pictureBoxStandby1.Visible = false;
-            pictureBoxStandby1.Click += Switch_Click;
-            // 
-            // pictureBoxLight6
-            // 
-            pictureBoxLight6.Image = Properties.Resources.LightOff_30;
-            pictureBoxLight6.Location = new Point(970, 379);
-            pictureBoxLight6.Name = "pictureBoxLight6";
-            pictureBoxLight6.Size = new Size(30, 30);
-            pictureBoxLight6.TabIndex = 37;
-            pictureBoxLight6.TabStop = false;
-            pictureBoxLight6.Visible = false;
-            pictureBoxLight6.Click += Switch_Click;
-            // 
-            // pictureBoxLight5
-            // 
-            pictureBoxLight5.Image = Properties.Resources.LightOff_30;
-            pictureBoxLight5.Location = new Point(934, 379);
-            pictureBoxLight5.Name = "pictureBoxLight5";
-            pictureBoxLight5.Size = new Size(30, 30);
-            pictureBoxLight5.TabIndex = 36;
-            pictureBoxLight5.TabStop = false;
-            pictureBoxLight5.Visible = false;
-            pictureBoxLight5.Click += Switch_Click;
-            // 
-            // pictureBoxLight4
-            // 
-            pictureBoxLight4.Image = Properties.Resources.LightOff_30;
-            pictureBoxLight4.Location = new Point(898, 379);
-            pictureBoxLight4.Name = "pictureBoxLight4";
-            pictureBoxLight4.Size = new Size(30, 30);
-            pictureBoxLight4.TabIndex = 35;
-            pictureBoxLight4.TabStop = false;
-            pictureBoxLight4.Visible = false;
-            pictureBoxLight4.Click += Switch_Click;
-            // 
-            // pictureBoxLight3
-            // 
-            pictureBoxLight3.Image = Properties.Resources.LightOff_30;
-            pictureBoxLight3.InitialImage = null;
-            pictureBoxLight3.Location = new Point(970, 344);
-            pictureBoxLight3.Name = "pictureBoxLight3";
-            pictureBoxLight3.Size = new Size(30, 30);
-            pictureBoxLight3.TabIndex = 34;
-            pictureBoxLight3.TabStop = false;
-            pictureBoxLight3.Visible = false;
-            pictureBoxLight3.Click += Switch_Click;
-            // 
-            // pictureBoxLight2
-            // 
-            pictureBoxLight2.Image = Properties.Resources.LightOff_30;
-            pictureBoxLight2.Location = new Point(934, 344);
-            pictureBoxLight2.Name = "pictureBoxLight2";
-            pictureBoxLight2.Size = new Size(30, 30);
-            pictureBoxLight2.TabIndex = 33;
-            pictureBoxLight2.TabStop = false;
-            pictureBoxLight2.Visible = false;
-            pictureBoxLight2.Click += Switch_Click;
-            // 
-            // pictureBoxLight1
-            // 
-            pictureBoxLight1.Image = Properties.Resources.LightOff_30;
-            pictureBoxLight1.Location = new Point(898, 344);
-            pictureBoxLight1.Name = "pictureBoxLight1";
-            pictureBoxLight1.Size = new Size(30, 30);
-            pictureBoxLight1.TabIndex = 32;
-            pictureBoxLight1.TabStop = false;
-            pictureBoxLight1.Visible = false;
-            pictureBoxLight1.Click += Switch_Click;
-            
-            // 
-            // textBoxSwitchStandbyCount
-            // 
-            textBoxSwitchStandbyCount.Location = new Point(944, 331);
-            textBoxSwitchStandbyCount.Margin = new Padding(2);
-            textBoxSwitchStandbyCount.Name = "textBoxSwitchStandbyCount";
-            textBoxSwitchStandbyCount.Size = new Size(55, 23);
-            textBoxSwitchStandbyCount.TabIndex = 116;
-            textBoxSwitchStandbyCount.Text = "0";
-            textBoxSwitchStandbyCount.TextAlign = HorizontalAlignment.Center;
-            textBoxSwitchStandbyCount.Visible = false;
-            textBoxSwitchStandbyCount.KeyDown += Switch_KeyDown;
-            textBoxSwitchStandbyCount.Leave += TestVectorSystem_TextChanged;
-            // 
-            // textBoxSwitchLightCount
-            // 
-            textBoxSwitchLightCount.Location = new Point(944, 302);
-            textBoxSwitchLightCount.Margin = new Padding(2);
-            textBoxSwitchLightCount.Name = "textBoxSwitchLightCount";
-            textBoxSwitchLightCount.Size = new Size(55, 23);
-            textBoxSwitchLightCount.TabIndex = 114;
-            textBoxSwitchLightCount.Text = "6";
-            textBoxSwitchLightCount.TextAlign = HorizontalAlignment.Center;
-            textBoxSwitchLightCount.Visible = false;
-            textBoxSwitchLightCount.KeyDown += Switch_KeyDown;
-            textBoxSwitchLightCount.Leave += TestVectorSystem_TextChanged;
-            // 
-            // labelSwitchLightCount
-            // 
-            labelSwitchLightCount.AutoSize = true;
-            labelSwitchLightCount.Location = new Point(882, 306);
-            labelSwitchLightCount.MinimumSize = new Size(51, 15);
-            labelSwitchLightCount.Name = "labelSwitchLightCount";
-            labelSwitchLightCount.Size = new Size(58, 15);
-            labelSwitchLightCount.TabIndex = 113;
-            labelSwitchLightCount.Text = "조명(수) :";
-            labelSwitchLightCount.Visible = false;
-            // 
-            // labelSwitchStandbyCount
-            // 
-            labelSwitchStandbyCount.AutoSize = true;
-            labelSwitchStandbyCount.Location = new Point(882, 334);
-            labelSwitchStandbyCount.MinimumSize = new Size(51, 15);
-            labelSwitchStandbyCount.Name = "labelSwitchStandbyCount";
-            labelSwitchStandbyCount.Size = new Size(58, 15);
-            labelSwitchStandbyCount.TabIndex = 115;
-            labelSwitchStandbyCount.Text = "대기(수) :";
-            labelSwitchStandbyCount.Visible = false;
-            */
-            // 
-            // groupBoxTestVector
-            // 
-            //groupBoxTestVector.Controls.Add(checkBoxTestVectorFormUse);
-            //groupBoxTestVector.Controls.Add(textBoxTestVectorTest);
-            //groupBoxTestVector.Controls.Add(textBoxTestVectorVer);
-            //groupBoxTestVector.Controls.Add(textBoxTestVectorGroup);
-            //groupBoxTestVector.Controls.Add(labelTestVectorTest);
-            //groupBoxTestVector.Controls.Add(labelTestVectorVer);
-            //groupBoxTestVector.Controls.Add(labelTestVectorGroup);
-            /*
-            groupBoxTestVector.Location = new Point(802, 155);
-            groupBoxTestVector.Margin = new Padding(2);
-            groupBoxTestVector.MinimumSize = new Size(269, 136);
-            groupBoxTestVector.Name = "groupBoxTestVector";
-            groupBoxTestVector.Padding = new Padding(2);
-            groupBoxTestVector.Size = new Size(269, 136);
-            groupBoxTestVector.TabIndex = 120;
-            groupBoxTestVector.TabStop = false;
-            groupBoxTestVector.Text = "TestVector";
-            groupBoxTestVector.Visible = false;
-            */
-            // 
-            /*
-            // checkBoxTestVectorFormUse
-            // 
-            checkBoxTestVectorFormUse.AutoSize = true;
-            checkBoxTestVectorFormUse.Location = new Point(7, 20);
-            checkBoxTestVectorFormUse.Margin = new Padding(2);
-            checkBoxTestVectorFormUse.Name = "checkBoxTestVectorFormUse";
-            checkBoxTestVectorFormUse.Size = new Size(137, 19);
-            checkBoxTestVectorFormUse.TabIndex = 121;
-            checkBoxTestVectorFormUse.Text = "TestVector Form Use";
-            checkBoxTestVectorFormUse.UseVisualStyleBackColor = true;
-            checkBoxTestVectorFormUse.Visible = false;
-            // 
-            // textBoxTestVectorTest
-            // 
-            textBoxTestVectorTest.Location = new Point(89, 101);
-            textBoxTestVectorTest.Margin = new Padding(2);
-            textBoxTestVectorTest.Name = "textBoxTestVectorTest";
-            textBoxTestVectorTest.Size = new Size(176, 23);
-            textBoxTestVectorTest.TabIndex = 127;
-            textBoxTestVectorTest.Visible = false;
-            textBoxTestVectorTest.KeyDown += TestVectorSystem_KeyDown;
-            textBoxTestVectorTest.Leave += TestVectorSystem_TextChanged;
-            // 
-            // textBoxTestVectorVer
-            // 
-            textBoxTestVectorVer.Location = new Point(89, 72);
-            textBoxTestVectorVer.Margin = new Padding(2);
-            textBoxTestVectorVer.Name = "textBoxTestVectorVer";
-            textBoxTestVectorVer.Size = new Size(176, 23);
-            textBoxTestVectorVer.TabIndex = 125;
-            textBoxTestVectorVer.Visible = false;
-            textBoxTestVectorVer.KeyDown += TestVectorSystem_KeyDown;
-            textBoxTestVectorVer.Leave += TestVectorSystem_TextChanged;
-            // 
-            // textBoxTestVectorGroup
-            // 
-            textBoxTestVectorGroup.Location = new Point(89, 42);
-            textBoxTestVectorGroup.Margin = new Padding(2);
-            textBoxTestVectorGroup.Name = "textBoxTestVectorGroup";
-            textBoxTestVectorGroup.Size = new Size(176, 23);
-            textBoxTestVectorGroup.TabIndex = 123;
-            textBoxTestVectorGroup.Visible = false;
-            textBoxTestVectorGroup.KeyDown += TestVectorSystem_KeyDown;
-            textBoxTestVectorGroup.Leave += TestVectorSystem_TextChanged;
-            // 
-            
-            // labelTestVectorTest
-            // 
-            labelTestVectorTest.AutoSize = true;
-            labelTestVectorTest.Location = new Point(58, 103);
-            labelTestVectorTest.MinimumSize = new Size(51, 15);
-            labelTestVectorTest.Name = "labelTestVectorTest";
-            labelTestVectorTest.Size = new Size(51, 15);
-            labelTestVectorTest.TabIndex = 126;
-            labelTestVectorTest.Text = "test :";
-            labelTestVectorTest.Visible = false;
-            // 
-            // labelTestVectorVer
-            // 
-            labelTestVectorVer.AutoSize = true;
-            labelTestVectorVer.Location = new Point(21, 75);
-            labelTestVectorVer.MinimumSize = new Size(51, 15);
-            labelTestVectorVer.Name = "labelTestVectorVer";
-            labelTestVectorVer.Size = new Size(69, 15);
-            labelTestVectorVer.TabIndex = 124;
-            labelTestVectorVer.Text = "device_ver :";
-            labelTestVectorVer.Visible = false;
-            // 
-            // labelTestVectorGroup
-            // 
-            labelTestVectorGroup.AutoSize = true;
-            labelTestVectorGroup.Location = new Point(4, 46);
-            labelTestVectorGroup.MinimumSize = new Size(51, 15);
-            labelTestVectorGroup.Name = "labelTestVectorGroup";
-            labelTestVectorGroup.Size = new Size(85, 15);
-            labelTestVectorGroup.TabIndex = 122;
-            labelTestVectorGroup.Text = "device_group :";
-            labelTestVectorGroup.Visible = false;
-            // 
-            */
             // textBoxCommunication
             // 
             textBoxCommunication.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -1143,12 +730,13 @@
             groupBox5.Controls.Add(button_GasDone);
             groupBox5.Controls.Add(button_GasClose);
             groupBox5.Controls.Add(button_GasOpen);
-            groupBox5.Location = new Point(292, 73);
+            groupBox5.Location = new Point(1046, 70);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(181, 91);
             groupBox5.TabIndex = 220;
             groupBox5.TabStop = false;
             groupBox5.Text = "가스 제어";
+            groupBox5.Visible = false;
             // 
             // button_GasFail
             // 
@@ -1199,12 +787,13 @@
             groupBox6.Controls.Add(button_ElvArrived);
             groupBox6.Controls.Add(button_ElvFail);
             groupBox6.Controls.Add(button_ElvDone);
-            groupBox6.Location = new Point(292, 169);
+            groupBox6.Location = new Point(1046, 166);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(181, 85);
             groupBox6.TabIndex = 220;
             groupBox6.TabStop = false;
             groupBox6.Text = "엘콜 제어";
+            groupBox6.Visible = false;
             // 
             // button_ElvArrived
             // 
@@ -1250,12 +839,13 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(comboBox_Finedust);
             groupBox2.Controls.Add(comboBox_WeatherCode);
-            groupBox2.Location = new Point(478, 15);
+            groupBox2.Location = new Point(1233, 12);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(215, 181);
             groupBox2.TabIndex = 221;
             groupBox2.TabStop = false;
             groupBox2.Text = "날씨정보 전달";
+            groupBox2.Visible = false;
             // 
             // button_SendWeather
             // 
@@ -1360,12 +950,13 @@
             groupBox8.Controls.Add(button_SendTime);
             groupBox8.Controls.Add(textBox_Year);
             groupBox8.Controls.Add(label8);
-            groupBox8.Location = new Point(292, 262);
+            groupBox8.Location = new Point(1046, 259);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new Size(181, 121);
             groupBox8.TabIndex = 222;
             groupBox8.TabStop = false;
             groupBox8.Text = "시간정보 전달";
+            groupBox8.Visible = false;
             // 
             // textBox_Second
             // 
@@ -1499,12 +1090,13 @@
             groupBox9.Controls.Add(label1);
             groupBox9.Controls.Add(button_SendParking);
             groupBox9.Controls.Add(label3);
-            groupBox9.Location = new Point(289, 387);
+            groupBox9.Location = new Point(1043, 384);
             groupBox9.Name = "groupBox9";
             groupBox9.Size = new Size(184, 214);
             groupBox9.TabIndex = 223;
             groupBox9.TabStop = false;
             groupBox9.Text = "주차정보 전달";
+            groupBox9.Visible = false;
             groupBox9.Enter += groupBox9_Enter;
             // 
             // label_Parking_num
@@ -1630,12 +1222,13 @@
             groupBox11.Controls.Add(checkBoxOut);
             groupBox11.Controls.Add(checkBoxGoWork_Reset);
             groupBox11.Controls.Add(checkBoxGoWork_Set);
-            groupBox11.Location = new Point(480, 376);
+            groupBox11.Location = new Point(1233, 369);
             groupBox11.Name = "groupBox11";
             groupBox11.Size = new Size(213, 225);
             groupBox11.TabIndex = 224;
             groupBox11.TabStop = false;
             groupBox11.Text = "Bypass 제어";
+            groupBox11.Visible = false;
             // 
             // button_BypassCtrl
             // 
@@ -1879,6 +1472,7 @@
             // 
             // groupBox12
             // 
+            groupBox12.Controls.Add(button_BypassStat);
             groupBox12.Controls.Add(label_volume);
             groupBox12.Controls.Add(label_elv);
             groupBox12.Controls.Add(label_gas);
@@ -1893,12 +1487,13 @@
             groupBox12.Controls.Add(label29);
             groupBox12.Controls.Add(label27);
             groupBox12.Controls.Add(label26);
-            groupBox12.Location = new Point(479, 202);
+            groupBox12.Location = new Point(1234, 199);
             groupBox12.Name = "groupBox12";
             groupBox12.Size = new Size(214, 164);
             groupBox12.TabIndex = 225;
             groupBox12.TabStop = false;
             groupBox12.Text = "Bypass 상태";
+            groupBox12.Visible = false;
             // 
             // label_volume
             // 
@@ -2029,20 +1624,20 @@
             // button_BypassStat
             // 
             button_BypassStat.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            button_BypassStat.Location = new Point(628, 227);
+            button_BypassStat.Location = new Point(154, 20);
             button_BypassStat.Name = "button_BypassStat";
             button_BypassStat.Size = new Size(54, 134);
             button_BypassStat.TabIndex = 1;
             button_BypassStat.Text = "상태요청";
             button_BypassStat.UseVisualStyleBackColor = true;
+            button_BypassStat.Visible = false;
             button_BypassStat.Click += Homenet_Tx_Button_Click;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1197, 603);
-            Controls.Add(button_BypassStat);
+            ClientSize = new Size(1319, 603);
             Controls.Add(groupBox12);
             Controls.Add(groupBox11);
             Controls.Add(groupBox9);
@@ -2051,14 +1646,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
-            //Controls.Add(groupBoxTestVector);
             Controls.Add(richTextBoxLog);
-           // Controls.Add(pictureBoxLight6);
-            //Controls.Add(pictureBoxLight5);
-            //Controls.Add(pictureBoxLight4);
-            //Controls.Add(pictureBoxLight3);
-            //Controls.Add(pictureBoxLight2);
-            //Controls.Add(pictureBoxLight1);
             Controls.Add(groupBoxConfiguration);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
@@ -2082,20 +1670,6 @@
             groupBoxSwitch.ResumeLayout(false);
             groupBoxSwitch.PerformLayout();
             groupBox4.ResumeLayout(false);
-            /*
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxStandby1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLight1).EndInit();
-            */
-            //groupBoxTestVector.ResumeLayout(false);
-            //groupBoxTestVector.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
             groupBox2.ResumeLayout(false);

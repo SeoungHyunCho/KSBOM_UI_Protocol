@@ -583,8 +583,10 @@ namespace SKAI_KSBOM_UI_protocol
         //added 25.07.13
         private void ParsingReceivedData_UI_Protocol(string data)
         {
-            string message = "[]";
-            
+            string msg_direction = "()";
+            string msg_cmd = "[]";
+            string message = "  ";
+
             int[] packet_buf = data
                 .Split(' ')
                 .Where(s => !string.IsNullOrWhiteSpace(s))
@@ -600,80 +602,418 @@ namespace SKAI_KSBOM_UI_protocol
                 int cmd = (int)(packet_buf[3] & 0x7F);
                 int direction = (int)(packet_buf[3] & 0x80);
 
-                if (direction == 0x80) { message = "(UI->Main)"; }
-                else                   { message = "(Main -> UI)"; }
+                if (direction == 0x80) { msg_direction = "(UI>Main)"; }
+                else                   { msg_direction = "(Main>UI)"; }
 
                 //switch (packet_buf[3])
                 switch (cmd)
                 {
                     case 0x00:  // 
-                        message += "[사양정보]";
+                        msg_cmd = "[사양정보]";
+
+                        message += "/ D0(화면):";
+                        if (packet_buf[5] == 0x01) { message += "가스"; }
+                        else if (packet_buf[5] == 0x02) { message += "쿡탑"; }
                         break;
+
                     case 0x71:  // 
-                        message += "[UI Input]";
+                        {
+                            msg_cmd = "[UI Input]";
+                            int long_touch = packet_buf[6] & 0x10;
+                            int touch_input = packet_buf[6] & 0x0F;
+                            int voice_input = packet_buf[7];
+
+                            message += "   D0(제어):";
+                            if (packet_buf[5] == 0x00) { message += "없음"; }
+                            else if (packet_buf[5] == 0x01) { message += "버튼"; }
+                            else if (packet_buf[5] == 0x02) { message += "음성"; }
+
+                            message += " / D1(버튼):";
+                            if (long_touch == 0x10) { message += "롱터치|"; }
+                            else { message += "숏터치|"; }
+                            if (touch_input == 0x00) { message += "없음"; }
+                            else if (touch_input == 0x02) { message += "일괄"; }
+                            else if (touch_input == 0x05) { message += "가스"; }
+                            else if (touch_input == 0x06) { message += "엘콜"; }
+                            else if (touch_input == 0x07) { message += "외출귀가"; }
+                            else if (touch_input == 0x0A) { message += "정보"; }
+
+                            message += " / D2(음성):";
+                            if (voice_input == 0x00) { message += "없음"; }
+                            else if (voice_input == 0x01) { message += "트리거"; }
+                            else if (voice_input == 0x03) { message += "일괄소등"; }
+                            else if (voice_input == 0x04) { message += "일괄점등"; }
+                            else if (voice_input == 0x05) { message += "가스"; }
+                            else if (voice_input == 0x06) { message += "엘콜"; }
+                            else if (voice_input == 0x08) { message += "외출"; }
+                            else if (voice_input == 0x09) { message += "귀가"; }
+                            else if (voice_input == 0x0A) { message += "정보"; }
+
+                            message += " / D3(음량):";
+                            if (packet_buf[8] == 0x00) { message += "변경없음"; }
+                            else if (packet_buf[8] == 0x01) { message += "음소거"; }
+                            else if (packet_buf[8] == 0x02) { message += "소"; }
+                            else if (packet_buf[8] == 0x03) { message += "중"; }
+                            else if (packet_buf[8] == 0x04) { message += "대"; }
+
+                            message += " / D4(음성인식):";
+                            if (packet_buf[9] == 0x00) { message += "변경없음"; }
+                            else if (packet_buf[9] == 0x01) { message += "사용"; }
+                            else if (packet_buf[9] == 0x02) { message += "미사용"; }
+
+                            message += " / D5(주차삭제):";
+                            if (packet_buf[10] == 0x00) { message += "요청없음"; }
+                            else if (packet_buf[10] == 0x01) { message += "요청있음"; }
+                        }
                         break;
                     case 0x01:  // 
-                        message += "[상태전달]";
+                        {
+                            msg_cmd = "[상태전달]";
+                            int status_gas = packet_buf[6] & 0x01;
+                            int status_light = packet_buf[6] & 0x02;
+                            int status_out = packet_buf[6] & 0x04;
+                            int status_delivery = packet_buf[6] & 0x08;
+                            int volume = packet_buf[7];
+                            int voice_mix = packet_buf[8];
+                            int voice_code = packet_buf[9];
+
+                            message += "   D0(rsv)";
+
+                            message += " / D1(상태):";
+                            if (status_gas == 0x01)     { message += "가스열림"; }
+                            else                        { message += "가스차단"; }
+                            if (status_light == 0x02)   { message += ",일괄점등"; }
+                            else                        { message += ",일괄소등"; }
+                            if (status_out == 0x04)     { message += ",귀가"; }
+                            else                        { message += ",외출"; }
+                            if (status_delivery == 0x08)    { message += ",택배있음"; }
+                            else                            { message += ",택배없음"; }
+
+                            message += " / D2(음량):";
+                            if(volume==0x00)            { message += "정보없음"; }
+                            else if (volume == 0x01)    { message += "음소거"; }
+                            else if (volume == 0x02)    { message += "소"; }
+                            else if (volume == 0x03)    { message += "중"; }
+                            else if (volume == 0x04)    { message += "대"; }
+
+                            message += " / D3(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D4(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     
 
                     case 0x11:  // 
-                        message += "[전체화면]";
-                        if (packet_buf[5] == 0x00) { message += " [없음]"; }
-                        else if (packet_buf[5] == 0x01) { message += " [메인화면]"; }
-                        else if (packet_buf[5] == 0x02) { message += " [음성대기화면]"; }
-                        else if (packet_buf[5] == 0x03) { message += " [음량설정화면]"; }
+                        {
+                            msg_cmd = "[전체화면]";
+                            int voice_mix = packet_buf[6];
+                            int voice_code = packet_buf[7];
+                            
+                            message += "   D0(화면):";
+                            if (packet_buf[5] == 0x00) { message += "없음"; }
+                            else if (packet_buf[5] == 0x01) { message += "메인화면"; }
+                            else if (packet_buf[5] == 0x02) { message += "음성대기화면"; }
+                            else if (packet_buf[5] == 0x03) { message += "음량설정화면"; }
 
+                            message += " / D1(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D2(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x12:  // 
-                        message += "[일괄소등화면]";
+                        {
+                            msg_cmd = "[일괄소등화면]";
+                            int status_light = packet_buf[5];
+                            int voice_mix = packet_buf[6];
+                            int voice_code = packet_buf[7];
+                            
+                            message += "   D0(일괄):";
+                            if (status_light == 0x00) { message += "소등"; }
+                            else if (status_light == 0x01) { message += "점등"; }
+                            else if (status_light == 0x02) { message += "지연소등"; }
+
+                            message += " / D1(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D2(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x13:  // 
-                        message += "[가스차단화면]";
+                        {
+                            msg_cmd = "[가스차단화면]";
+                            int status_gas = packet_buf[5];
+                            int voice_mix = packet_buf[6];
+                            int voice_code = packet_buf[7];
+
+                            message += "   D0(가스):";
+                            if (status_gas == 0x00) { message += "설정중"; }
+                            else if (status_gas == 0x01) { message += "설정완료"; }
+                            else if (status_gas == 0x02) { message += "설정실패"; }
+                            else if (status_gas == 0x03) { message += "차단"; }
+                            else if (status_gas == 0x04) { message += "열림"; }
+
+                            message += " / D1(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D2(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x14:  // 
-                        message += "[엘콜화면]";
+                        {
+                            msg_cmd = "[엘콜화면]";
+
+                            int status_elv = packet_buf[5];
+                            int voice_mix = packet_buf[6];
+                            int voice_code = packet_buf[7];
+
+                            message += "   D0(엘콜):";
+                            if (status_elv == 0x00) { message += "호출중"; }
+                            else if (status_elv == 0x01) { message += "완료"; }
+                            else if (status_elv == 0x02) { message += "실패"; }
+                            else if (status_elv == 0x03) { message += "도착"; }
+
+                            message += " / D1(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D2(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x15:  // 
-                        message += "[복도등화면 - 사용안함]";
+                        msg_cmd = "[복도등화면 - 사용안함]";
                         break;
                     case 0x16:  // 
-                        message += "[방범화면 - 사용안함]";
+                        msg_cmd = "[방범화면 - 사용안함]";
                         break;
                     case 0x17:  // 
-                        message += "[외출화면]";
+                        {
+                            msg_cmd = "[외출화면]";
+
+                            int status_out = packet_buf[5];
+                            int icon_delivery = packet_buf[6] & 0x01;
+                            int icon_parking = packet_buf[6] & 0x02;
+                            int icon_elv = packet_buf[6] & 0x04;
+                            int icon_gas = packet_buf[6] & 0x08;
+                            int icon_light = packet_buf[6] & 0x10;
+
+                            int status_AI_Heat = packet_buf[7];
+                            int status_gas = packet_buf[8];
+                            int status_parking = packet_buf[9];
+                            int status_elv = packet_buf[10];
+                            int voice_mix = packet_buf[11];
+                            int voice_code = packet_buf[12];
+
+                            message += "   D0(외출):";
+                            if(status_out == 0x00) { message += "설정중"; }
+                            else if (status_out == 0x01) { message += "설정성공"; }
+                            else if (status_out == 0x02) { message += "설정실패"; }
+
+                            message += " / D1(아이콘):";
+                            if (icon_delivery == 0x01)  { message += "택배있음"; }
+                            else                        { message += "택배없음"; }
+                            if (icon_parking == 0x02)   { message += ",주차있음"; }
+                            else                        { message += ",주차없음"; }
+                            if (icon_elv == 0x04)       { message += ",엘콜있음"; }
+                            else                        { message += ",엘콜없음"; }
+                            if (icon_gas == 0x08)       { message += ",가스차단 활성"; }
+                            else                        { message += ",가스차단 비활성"; }
+                            if (icon_light == 0x10)     { message += ",일괄 활성"; }
+                            else                        { message += ",일괄 비활성"; }
+
+
+                            message += " / D2(인공지능난방):";
+                            if (status_AI_Heat == 0x00) { message += "해당없음"; }
+                            else if (status_AI_Heat == 0x01) { message += "사용"; }
+                            
+                            message += " / D3(가스):";
+                            if (status_gas == 0x00) { message += "설정중"; }
+                            else if (status_gas == 0x01) { message += "설정완료"; }
+                            else if (status_gas == 0x02) { message += "설정실패"; }
+                            else if (status_gas == 0x03) { message += "차단"; }
+                            else if (status_gas == 0x04) { message += "열림"; }
+
+                            message += " / D4(주차):";
+                            if (status_parking == 0x00) { message += "정보없음"; }
+                            else if (status_parking == 0x01) { message += "정보있음"; }
+
+                            message += " / D5(엘콜):";
+                            if (status_elv == 0x00) { message += "호출중"; }
+                            else if (status_elv == 0x01) { message += "호출완료"; }
+                            else if (status_elv == 0x02) { message += "호출실패"; }
+                            else if (status_elv == 0x03) { message += "도착"; }
+
+                            message += " / D6(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D7(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x18:  // 
-                        message += "[귀가화면]";
+                        {
+                            msg_cmd = "[귀가화면]";
+
+                            int icon_notice = packet_buf[5] & 0x01;
+                            int icon_parking = packet_buf[5] & 0x02;
+                            int icon_delivery = packet_buf[5] & 0x04;
+                            int icon_guest = packet_buf[5] & 0x08;
+                            int icon_light = packet_buf[5] & 0x10;
+                            int status_AI_Heat = packet_buf[6];
+                            int number_notice = packet_buf[7];
+                            int status_delivery = packet_buf[8];
+                            int number_guest = packet_buf[9];
+
+                            int voice_mix = packet_buf[10];
+                            int voice_code = packet_buf[11];
+
+                            message += "   D0(아이콘):";
+                            if (icon_notice == 0x01)    { message += "공지있음"; }
+                            else                        { message += "공지없음"; }
+                            if (icon_parking == 0x02)   { message += ",주차있음"; }
+                            else                        { message += ",주차없음"; }
+                            if (icon_delivery == 0x04)  { message += ",택배있음"; }
+                            else                        { message += ",택베없음"; }
+                            if (icon_guest == 0x08)     { message += ",방문자 있음"; }
+                            else                        { message += ",방문자 없음"; }
+                            if (icon_light == 0x10)     { message += ",일괄 활성"; }
+                            else                        { message += ",일괄 비활성"; }
+
+                            message += " / D1(인공지능난방):";
+                            if (status_AI_Heat == 0x00) { message += "해당없음"; }
+                            else if (status_AI_Heat == 0x01) { message += "사용"; }
+
+                            message += " / D2(공지사항):";
+                            message += number_notice.ToString();
+                            message += "건";
+
+                            message += " / D3(택배):";
+                            if(status_delivery==0x00)   { message += "없음"; }
+                            else                        { message += "있음"; }
+
+                            message += " / D4(방문자):";
+                            message += number_guest.ToString();
+                            message += "명";
+
+                            message += " / D5(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D6(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x19:  // 
-                        message += "[출근/정보화면]";
+                        {
+                            msg_cmd = "[출근/정보화면]";
+                            int status_delivery = packet_buf[5];
+                            int status_parking = packet_buf[6];
+                            int voice_mix = packet_buf[7];
+                            int voice_code = packet_buf[8];
+
+                            message += "   D0(택배):";
+                            if (status_delivery == 0x00) { message += "없음"; }
+                            else if (status_delivery == 0x01) { message += "있음"; }
+
+                            message += " / D1(주차):";
+                            if (status_parking == 0x00) { message += "없음"; }
+                            else if (status_parking == 0x01) { message += "있음"; }
+
+                            message += " / D2(음성모드):";
+                            if (voice_mix == 0x00) { message += "없음"; }
+                            else if (voice_mix == 0x01) { message += "외출모드"; }
+                            else if (voice_mix == 0x02) { message += "귀가모드"; }
+                            else if (voice_mix == 0x03) { message += "출근모드"; }
+                            else if (voice_mix == 0x04) { message += "정보화면"; }
+
+                            message += " / D3(음성코드):";
+                            message += voice_code.ToString();
+                        }
                         break;
                     case 0x1A:  // 출근/정보화면으로 합침
-                        message += "[정보화면 - 사용안함]";
+                        msg_cmd = "[정보화면 - 사용안함]";
                         break;
                     case 0x1B:  // 
-                        message += "[LCD백라이트]";
+                        msg_cmd = "[LCD백라이트]";
+
+                        message += "   D0(백라이트):";
+                        if (packet_buf[5] == 0x00) { message += "꺼짐"; }
+                        else if (packet_buf[5] == 0x01) { message += "FADE_OUT"; }
+                        else if (packet_buf[5] == 0x02) { message += "어두움"; }
+                        else if (packet_buf[5] == 0x03) { message += "켜짐"; }
                         break;
 
                     case 0x44:  // 
-                        message += "[날씨정보]";
+                        msg_cmd = "[날씨정보]";
                         break;
                     case 0x45:  // 
-                        message += "[시간정보]";
+                        msg_cmd = "[시간정보]";
                         break;
                     case 0x47:  // 
-                        message += "[주차정보]";
+                        msg_cmd = "[주차정보]";
                         break;
                     case 0x50:  // 
-                        message += "[택배/방문자/공지사항]";
+                        {
+                            msg_cmd = "[택배/방문자/공지사항]";
+
+                            int status_delivery = packet_buf[5] & 0x01;
+                            int number_guest = packet_buf[6];
+                            int number_notice = packet_buf[7];                            
+                            
+                            message += "   D0(택배):";
+                            if (status_delivery == 0x00) { message += "없음"; }
+                            else { message += "있음"; }
+
+                            message += " / D1(방문자):";
+                            message += number_guest.ToString();
+                            message += "명";
+
+                            message += " / D2(공지사항):";
+                            message += number_notice.ToString();
+                            message += "건";
+                        }
                         break;
                     default:
-                        message += "[CMD 오류]";
+                        msg_cmd = "[CMD 오류]";
                         break;
                 }
-                //this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.AppendText(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.fff") + " R< : " + this.m_Communication_KS.ReceiveData + "\r\n")));
-                this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.AppendText(message + "\r\n")));
+                this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.AppendText(msg_direction )));
+                this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.SelectionColor = Color.Red));
+                this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.AppendText(msg_cmd)));
+                this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.SelectionColor = Color.White));
+                this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.AppendText(message + "\r\n\n")));
                 this.richTextBoxLog.Invoke(new Action(() => this.richTextBoxLog.ScrollToCaret()));
             }
         }
