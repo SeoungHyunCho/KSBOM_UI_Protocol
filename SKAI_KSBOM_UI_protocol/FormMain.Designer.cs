@@ -32,6 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             richTextBoxLog = new RichTextBox();
             groupBoxConfiguration = new GroupBox();
+            groupBoxCommunication = new GroupBox();
+            labelCommunicationRepeatCount = new Label();
+            checkBoxCommunicationHex = new CheckBox();
+            textBoxCommunicationRepeatCount = new TextBox();
+            buttonCommunicationSearch = new Button();
+            buttonCommunicationConnection = new Button();
+            labelCommunicationBaudrate = new Label();
+            labelCommunicationComPort = new Label();
+            comboBoxCommunicationBaudrate = new ComboBox();
+            comboBoxCommunicationComPort = new ComboBox();
+            buttonCommunicationSend = new Button();
             groupBox10 = new GroupBox();
             checkBox_Notice = new CheckBox();
             checkBox_Guest = new CheckBox();
@@ -45,6 +56,19 @@
             checkBox_BypassON = new CheckBox();
             checkBox_BatchStatus = new CheckBox();
             checkBox_GasCloseReq = new CheckBox();
+            groupBox9 = new GroupBox();
+            label_Parking_num = new Label();
+            label21 = new Label();
+            label16 = new Label();
+            textBox_Car2Pos = new TextBox();
+            textBox_Car1Pos = new TextBox();
+            textBox_Car2Num = new TextBox();
+            textBox_Car1Num = new TextBox();
+            label2 = new Label();
+            label4 = new Label();
+            label1 = new Label();
+            button_SendParking = new Button();
+            label3 = new Label();
             label19 = new Label();
             label18 = new Label();
             label17 = new Label();
@@ -53,17 +77,6 @@
             groupBox1 = new GroupBox();
             comboBoxProtocols = new ComboBox();
             checkBoxLight = new CheckBox();
-            groupBoxCommunication = new GroupBox();
-            labelCommunicationRepeatCount = new Label();
-            checkBoxCommunicationHex = new CheckBox();
-            textBoxCommunicationRepeatCount = new TextBox();
-            buttonCommunicationSearch = new Button();
-            buttonCommunicationConnection = new Button();
-            labelCommunicationBaudrate = new Label();
-            labelCommunicationComPort = new Label();
-            comboBoxCommunicationBaudrate = new ComboBox();
-            comboBoxCommunicationComPort = new ComboBox();
-            buttonCommunicationSend = new Button();
             groupBoxExecution = new GroupBox();
             buttonReset = new Button();
             buttonRemove = new Button();
@@ -109,19 +122,6 @@
             textBox_Year = new TextBox();
             label8 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            groupBox9 = new GroupBox();
-            label_Parking_num = new Label();
-            label21 = new Label();
-            label16 = new Label();
-            textBox_Car2Pos = new TextBox();
-            textBox_Car1Pos = new TextBox();
-            textBox_Car2Num = new TextBox();
-            textBox_Car1Num = new TextBox();
-            label2 = new Label();
-            label4 = new Label();
-            label1 = new Label();
-            button_SendParking = new Button();
-            label3 = new Label();
             groupBox11 = new GroupBox();
             button_BypassCtrl = new Button();
             checkBoxVol_3 = new CheckBox();
@@ -143,6 +143,7 @@
             checkBoxGoWork_Reset = new CheckBox();
             checkBoxGoWork_Set = new CheckBox();
             groupBox12 = new GroupBox();
+            button_BypassStat = new Button();
             label_volume = new Label();
             label_elv = new Label();
             label_gas = new Label();
@@ -157,12 +158,13 @@
             label29 = new Label();
             label27 = new Label();
             label26 = new Label();
-            button_BypassStat = new Button();
+            button_Clear = new Button();
             groupBoxConfiguration.SuspendLayout();
+            groupBoxCommunication.SuspendLayout();
             groupBox10.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox9.SuspendLayout();
             groupBox1.SuspendLayout();
-            groupBoxCommunication.SuspendLayout();
             groupBoxExecution.SuspendLayout();
             groupBoxSwitch.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -170,7 +172,6 @@
             groupBox6.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox8.SuspendLayout();
-            groupBox9.SuspendLayout();
             groupBox11.SuspendLayout();
             groupBox12.SuspendLayout();
             SuspendLayout();
@@ -180,12 +181,12 @@
             richTextBoxLog.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBoxLog.BackColor = Color.Black;
             richTextBoxLog.ForeColor = Color.White;
-            richTextBoxLog.Location = new Point(281, 9);
+            richTextBoxLog.Location = new Point(153, 3);
             richTextBoxLog.Margin = new Padding(2);
             richTextBoxLog.MinimumSize = new Size(481, 464);
             richTextBoxLog.Name = "richTextBoxLog";
             richTextBoxLog.ReadOnly = true;
-            richTextBoxLog.Size = new Size(911, 554);
+            richTextBoxLog.Size = new Size(960, 554);
             richTextBoxLog.TabIndex = 0;
             richTextBoxLog.Text = "";
             richTextBoxLog.KeyDown += Execution_KeyDown;
@@ -193,277 +194,17 @@
             // groupBoxConfiguration
             // 
             groupBoxConfiguration.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            groupBoxConfiguration.Controls.Add(groupBox10);
-            groupBoxConfiguration.Controls.Add(groupBox3);
-            groupBoxConfiguration.Controls.Add(groupBox1);
             groupBoxConfiguration.Controls.Add(groupBoxCommunication);
-            groupBoxConfiguration.Controls.Add(groupBoxExecution);
-            groupBoxConfiguration.Controls.Add(groupBoxSwitch);
+            groupBoxConfiguration.Controls.Add(button_Clear);
             groupBoxConfiguration.Location = new Point(9, 9);
             groupBoxConfiguration.Margin = new Padding(2);
-            groupBoxConfiguration.MinimumSize = new Size(264, 485);
+            groupBoxConfiguration.MinimumSize = new Size(100, 485);
             groupBoxConfiguration.Name = "groupBoxConfiguration";
             groupBoxConfiguration.Padding = new Padding(2);
-            groupBoxConfiguration.Size = new Size(275, 592);
+            groupBoxConfiguration.Size = new Size(134, 592);
             groupBoxConfiguration.TabIndex = 100;
             groupBoxConfiguration.TabStop = false;
             groupBoxConfiguration.Text = "Configuration";
-            // 
-            // groupBox10
-            // 
-            groupBox10.Controls.Add(checkBox_Notice);
-            groupBox10.Controls.Add(checkBox_Guest);
-            groupBox10.Controls.Add(checkBox_Delivery);
-            groupBox10.Controls.Add(button_SendNotice);
-            groupBox10.Location = new Point(6, 471);
-            groupBox10.Name = "groupBox10";
-            groupBox10.Size = new Size(181, 86);
-            groupBox10.TabIndex = 224;
-            groupBox10.TabStop = false;
-            groupBox10.Text = "택배/방문자/공지사항 전달";
-            groupBox10.Visible = false;
-            // 
-            // checkBox_Notice
-            // 
-            checkBox_Notice.AutoSize = true;
-            checkBox_Notice.Location = new Point(110, 26);
-            checkBox_Notice.Name = "checkBox_Notice";
-            checkBox_Notice.Size = new Size(74, 19);
-            checkBox_Notice.TabIndex = 0;
-            checkBox_Notice.Text = "공지사항";
-            checkBox_Notice.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Guest
-            // 
-            checkBox_Guest.AutoSize = true;
-            checkBox_Guest.Location = new Point(50, 26);
-            checkBox_Guest.Name = "checkBox_Guest";
-            checkBox_Guest.Size = new Size(62, 19);
-            checkBox_Guest.TabIndex = 0;
-            checkBox_Guest.Text = "방문자";
-            checkBox_Guest.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Delivery
-            // 
-            checkBox_Delivery.AutoSize = true;
-            checkBox_Delivery.Location = new Point(3, 26);
-            checkBox_Delivery.Name = "checkBox_Delivery";
-            checkBox_Delivery.Size = new Size(50, 19);
-            checkBox_Delivery.TabIndex = 0;
-            checkBox_Delivery.Text = "택배";
-            checkBox_Delivery.UseVisualStyleBackColor = true;
-            // 
-            // button_SendNotice
-            // 
-            button_SendNotice.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            button_SendNotice.Location = new Point(8, 51);
-            button_SendNotice.Name = "button_SendNotice";
-            button_SendNotice.Size = new Size(167, 26);
-            button_SendNotice.TabIndex = 1;
-            button_SendNotice.Text = "보내기";
-            button_SendNotice.UseVisualStyleBackColor = true;
-            button_SendNotice.Click += Homenet_Tx_Button_Click;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(checkBoxGasClose);
-            groupBox3.Controls.Add(checkBoxGasOpen);
-            groupBox3.Controls.Add(button_StatReq);
-            groupBox3.Controls.Add(checkBox_ElvCallReq);
-            groupBox3.Controls.Add(checkBox_BypassON);
-            groupBox3.Controls.Add(checkBox_BatchStatus);
-            groupBox3.Controls.Add(checkBox_GasCloseReq);
-            groupBox3.Controls.Add(label19);
-            groupBox3.Controls.Add(label18);
-            groupBox3.Controls.Add(label17);
-            groupBox3.Controls.Add(label14);
-            groupBox3.Controls.Add(label13);
-            groupBox3.Font = new Font("맑은 고딕", 9F);
-            groupBox3.Location = new Point(5, 287);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(262, 175);
-            groupBox3.TabIndex = 220;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "상태 모니터링";
-            groupBox3.Visible = false;
-            // 
-            // checkBoxGasClose
-            // 
-            checkBoxGasClose.AutoSize = true;
-            checkBoxGasClose.Font = new Font("맑은 고딕", 8F);
-            checkBoxGasClose.Location = new Point(120, 22);
-            checkBoxGasClose.Margin = new Padding(2);
-            checkBoxGasClose.Name = "checkBoxGasClose";
-            checkBoxGasClose.Size = new Size(74, 17);
-            checkBoxGasClose.TabIndex = 220;
-            checkBoxGasClose.Text = "가스 차단";
-            checkBoxGasClose.UseVisualStyleBackColor = true;
-            checkBoxGasClose.Click += Gas_Status_Click;
-            // 
-            // checkBoxGasOpen
-            // 
-            checkBoxGasOpen.AutoSize = true;
-            checkBoxGasOpen.Checked = true;
-            checkBoxGasOpen.CheckState = CheckState.Checked;
-            checkBoxGasOpen.Font = new Font("맑은 고딕", 8F);
-            checkBoxGasOpen.Location = new Point(9, 22);
-            checkBoxGasOpen.Margin = new Padding(2);
-            checkBoxGasOpen.Name = "checkBoxGasOpen";
-            checkBoxGasOpen.Size = new Size(74, 17);
-            checkBoxGasOpen.TabIndex = 220;
-            checkBoxGasOpen.Text = "가스 열림";
-            checkBoxGasOpen.UseVisualStyleBackColor = true;
-            checkBoxGasOpen.CheckedChanged += checkBoxGasOpen_CheckedChanged;
-            checkBoxGasOpen.Click += Gas_Status_Click;
-            // 
-            // button_StatReq
-            // 
-            button_StatReq.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            button_StatReq.Location = new Point(5, 47);
-            button_StatReq.Margin = new Padding(2);
-            button_StatReq.Name = "button_StatReq";
-            button_StatReq.Size = new Size(210, 26);
-            button_StatReq.TabIndex = 33;
-            button_StatReq.Text = "상태요청";
-            button_StatReq.UseVisualStyleBackColor = true;
-            button_StatReq.Click += Homenet_Tx_Button_Click;
-            // 
-            // checkBox_ElvCallReq
-            // 
-            checkBox_ElvCallReq.Appearance = Appearance.Button;
-            checkBox_ElvCallReq.AutoSize = true;
-            checkBox_ElvCallReq.Location = new Point(73, 144);
-            checkBox_ElvCallReq.MinimumSize = new Size(50, 10);
-            checkBox_ElvCallReq.Name = "checkBox_ElvCallReq";
-            checkBox_ElvCallReq.Size = new Size(50, 25);
-            checkBox_ElvCallReq.TabIndex = 32;
-            checkBox_ElvCallReq.Text = "--";
-            checkBox_ElvCallReq.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_BypassON
-            // 
-            checkBox_BypassON.Appearance = Appearance.Button;
-            checkBox_BypassON.AutoSize = true;
-            checkBox_BypassON.Location = new Point(171, 141);
-            checkBox_BypassON.MinimumSize = new Size(50, 10);
-            checkBox_BypassON.Name = "checkBox_BypassON";
-            checkBox_BypassON.Size = new Size(50, 25);
-            checkBox_BypassON.TabIndex = 31;
-            checkBox_BypassON.Text = "--";
-            checkBox_BypassON.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_BatchStatus
-            // 
-            checkBox_BatchStatus.Appearance = Appearance.Button;
-            checkBox_BatchStatus.AutoSize = true;
-            checkBox_BatchStatus.Location = new Point(171, 116);
-            checkBox_BatchStatus.MinimumSize = new Size(50, 10);
-            checkBox_BatchStatus.Name = "checkBox_BatchStatus";
-            checkBox_BatchStatus.Size = new Size(50, 25);
-            checkBox_BatchStatus.TabIndex = 30;
-            checkBox_BatchStatus.Text = "--";
-            checkBox_BatchStatus.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_GasCloseReq
-            // 
-            checkBox_GasCloseReq.Appearance = Appearance.Button;
-            checkBox_GasCloseReq.AutoSize = true;
-            checkBox_GasCloseReq.BackColor = SystemColors.Control;
-            checkBox_GasCloseReq.Location = new Point(73, 117);
-            checkBox_GasCloseReq.MinimumSize = new Size(50, 10);
-            checkBox_GasCloseReq.Name = "checkBox_GasCloseReq";
-            checkBox_GasCloseReq.Size = new Size(50, 25);
-            checkBox_GasCloseReq.TabIndex = 29;
-            checkBox_GasCloseReq.Text = "--";
-            checkBox_GasCloseReq.UseVisualStyleBackColor = false;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("맑은 고딕", 8F);
-            label19.Location = new Point(1, 146);
-            label19.Name = "label19";
-            label19.Size = new Size(73, 13);
-            label19.TabIndex = 26;
-            label19.Text = "엘콜하강호출";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("맑은 고딕", 8F);
-            label18.Location = new Point(125, 146);
-            label18.Name = "label18";
-            label18.Size = new Size(51, 13);
-            label18.TabIndex = 25;
-            label18.Text = "바이패스";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("맑은 고딕", 8F);
-            label17.Location = new Point(126, 121);
-            label17.Name = "label17";
-            label17.Size = new Size(29, 13);
-            label17.TabIndex = 24;
-            label17.Text = "일괄";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("맑은 고딕", 8F);
-            label14.Location = new Point(1, 121);
-            label14.Name = "label14";
-            label14.Size = new Size(73, 13);
-            label14.TabIndex = 21;
-            label14.Text = "가스잠금요구";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            label13.Location = new Point(9, 98);
-            label13.Name = "label13";
-            label13.Size = new Size(59, 15);
-            label13.TabIndex = 20;
-            label13.Text = "상태 응답";
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(comboBoxProtocols);
-            groupBox1.Controls.Add(checkBoxLight);
-            groupBox1.Location = new Point(6, 205);
-            groupBox1.Margin = new Padding(2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(134, 77);
-            groupBox1.TabIndex = 203;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Protocol";
-            // 
-            // comboBoxProtocols
-            // 
-            comboBoxProtocols.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxProtocols.FormattingEnabled = true;
-            comboBoxProtocols.Items.AddRange(new object[] { "KS", "COMMAX", "CVnet", "현대HT" });
-            comboBoxProtocols.Location = new Point(6, 22);
-            comboBoxProtocols.MinimumSize = new Size(100, 0);
-            comboBoxProtocols.Name = "comboBoxProtocols";
-            comboBoxProtocols.Size = new Size(100, 23);
-            comboBoxProtocols.TabIndex = 132;
-            comboBoxProtocols.KeyDown += Protocols_KeyDown;
-            // 
-            // checkBoxLight
-            // 
-            checkBoxLight.AutoSize = true;
-            checkBoxLight.Checked = true;
-            checkBoxLight.CheckState = CheckState.Checked;
-            checkBoxLight.Location = new Point(4, 50);
-            checkBoxLight.Margin = new Padding(2);
-            checkBoxLight.Name = "checkBoxLight";
-            checkBoxLight.Size = new Size(86, 19);
-            checkBoxLight.TabIndex = 133;
-            checkBoxLight.Text = "생활정보기";
-            checkBoxLight.UseVisualStyleBackColor = true;
             // 
             // groupBoxCommunication
             // 
@@ -477,7 +218,7 @@
             groupBoxCommunication.Controls.Add(comboBoxCommunicationBaudrate);
             groupBoxCommunication.Controls.Add(comboBoxCommunicationComPort);
             groupBoxCommunication.Controls.Add(buttonCommunicationSend);
-            groupBoxCommunication.Location = new Point(146, 21);
+            groupBoxCommunication.Location = new Point(5, 15);
             groupBoxCommunication.Name = "groupBoxCommunication";
             groupBoxCommunication.Size = new Size(122, 260);
             groupBoxCommunication.TabIndex = 202;
@@ -593,12 +334,395 @@
             buttonCommunicationSend.UseVisualStyleBackColor = true;
             buttonCommunicationSend.Click += Communication_KS_Click;
             // 
+            // groupBox10
+            // 
+            groupBox10.Controls.Add(checkBox_Notice);
+            groupBox10.Controls.Add(checkBox_Guest);
+            groupBox10.Controls.Add(checkBox_Delivery);
+            groupBox10.Controls.Add(button_SendNotice);
+            groupBox10.Location = new Point(848, 450);
+            groupBox10.Name = "groupBox10";
+            groupBox10.Size = new Size(181, 86);
+            groupBox10.TabIndex = 224;
+            groupBox10.TabStop = false;
+            groupBox10.Text = "택배/방문자/공지사항 전달";
+            groupBox10.Visible = false;
+            // 
+            // checkBox_Notice
+            // 
+            checkBox_Notice.AutoSize = true;
+            checkBox_Notice.Location = new Point(110, 26);
+            checkBox_Notice.Name = "checkBox_Notice";
+            checkBox_Notice.Size = new Size(74, 19);
+            checkBox_Notice.TabIndex = 0;
+            checkBox_Notice.Text = "공지사항";
+            checkBox_Notice.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Guest
+            // 
+            checkBox_Guest.AutoSize = true;
+            checkBox_Guest.Location = new Point(50, 26);
+            checkBox_Guest.Name = "checkBox_Guest";
+            checkBox_Guest.Size = new Size(62, 19);
+            checkBox_Guest.TabIndex = 0;
+            checkBox_Guest.Text = "방문자";
+            checkBox_Guest.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Delivery
+            // 
+            checkBox_Delivery.AutoSize = true;
+            checkBox_Delivery.Location = new Point(3, 26);
+            checkBox_Delivery.Name = "checkBox_Delivery";
+            checkBox_Delivery.Size = new Size(50, 19);
+            checkBox_Delivery.TabIndex = 0;
+            checkBox_Delivery.Text = "택배";
+            checkBox_Delivery.UseVisualStyleBackColor = true;
+            // 
+            // button_SendNotice
+            // 
+            button_SendNotice.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            button_SendNotice.Location = new Point(8, 51);
+            button_SendNotice.Name = "button_SendNotice";
+            button_SendNotice.Size = new Size(167, 26);
+            button_SendNotice.TabIndex = 1;
+            button_SendNotice.Text = "보내기";
+            button_SendNotice.UseVisualStyleBackColor = true;
+            button_SendNotice.Click += Homenet_Tx_Button_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(checkBoxGasClose);
+            groupBox3.Controls.Add(checkBoxGasOpen);
+            groupBox3.Controls.Add(button_StatReq);
+            groupBox3.Controls.Add(checkBox_ElvCallReq);
+            groupBox3.Controls.Add(checkBox_BypassON);
+            groupBox3.Controls.Add(checkBox_BatchStatus);
+            groupBox3.Controls.Add(checkBox_GasCloseReq);
+            groupBox3.Controls.Add(groupBox9);
+            groupBox3.Controls.Add(label19);
+            groupBox3.Controls.Add(label18);
+            groupBox3.Controls.Add(label17);
+            groupBox3.Controls.Add(label14);
+            groupBox3.Controls.Add(label13);
+            groupBox3.Font = new Font("맑은 고딕", 9F);
+            groupBox3.Location = new Point(853, 293);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(262, 175);
+            groupBox3.TabIndex = 220;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "상태 모니터링";
+            groupBox3.Visible = false;
+            // 
+            // checkBoxGasClose
+            // 
+            checkBoxGasClose.AutoSize = true;
+            checkBoxGasClose.Font = new Font("맑은 고딕", 8F);
+            checkBoxGasClose.Location = new Point(120, 22);
+            checkBoxGasClose.Margin = new Padding(2);
+            checkBoxGasClose.Name = "checkBoxGasClose";
+            checkBoxGasClose.Size = new Size(74, 17);
+            checkBoxGasClose.TabIndex = 220;
+            checkBoxGasClose.Text = "가스 차단";
+            checkBoxGasClose.UseVisualStyleBackColor = true;
+            checkBoxGasClose.Click += Gas_Status_Click;
+            // 
+            // checkBoxGasOpen
+            // 
+            checkBoxGasOpen.AutoSize = true;
+            checkBoxGasOpen.Checked = true;
+            checkBoxGasOpen.CheckState = CheckState.Checked;
+            checkBoxGasOpen.Font = new Font("맑은 고딕", 8F);
+            checkBoxGasOpen.Location = new Point(9, 22);
+            checkBoxGasOpen.Margin = new Padding(2);
+            checkBoxGasOpen.Name = "checkBoxGasOpen";
+            checkBoxGasOpen.Size = new Size(74, 17);
+            checkBoxGasOpen.TabIndex = 220;
+            checkBoxGasOpen.Text = "가스 열림";
+            checkBoxGasOpen.UseVisualStyleBackColor = true;
+            checkBoxGasOpen.CheckedChanged += checkBoxGasOpen_CheckedChanged;
+            checkBoxGasOpen.Click += Gas_Status_Click;
+            // 
+            // button_StatReq
+            // 
+            button_StatReq.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            button_StatReq.Location = new Point(5, 47);
+            button_StatReq.Margin = new Padding(2);
+            button_StatReq.Name = "button_StatReq";
+            button_StatReq.Size = new Size(210, 26);
+            button_StatReq.TabIndex = 33;
+            button_StatReq.Text = "상태요청";
+            button_StatReq.UseVisualStyleBackColor = true;
+            button_StatReq.Click += Homenet_Tx_Button_Click;
+            // 
+            // checkBox_ElvCallReq
+            // 
+            checkBox_ElvCallReq.Appearance = Appearance.Button;
+            checkBox_ElvCallReq.AutoSize = true;
+            checkBox_ElvCallReq.Location = new Point(73, 144);
+            checkBox_ElvCallReq.MinimumSize = new Size(50, 10);
+            checkBox_ElvCallReq.Name = "checkBox_ElvCallReq";
+            checkBox_ElvCallReq.Size = new Size(50, 25);
+            checkBox_ElvCallReq.TabIndex = 32;
+            checkBox_ElvCallReq.Text = "--";
+            checkBox_ElvCallReq.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_BypassON
+            // 
+            checkBox_BypassON.Appearance = Appearance.Button;
+            checkBox_BypassON.AutoSize = true;
+            checkBox_BypassON.Location = new Point(171, 141);
+            checkBox_BypassON.MinimumSize = new Size(50, 10);
+            checkBox_BypassON.Name = "checkBox_BypassON";
+            checkBox_BypassON.Size = new Size(50, 25);
+            checkBox_BypassON.TabIndex = 31;
+            checkBox_BypassON.Text = "--";
+            checkBox_BypassON.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_BatchStatus
+            // 
+            checkBox_BatchStatus.Appearance = Appearance.Button;
+            checkBox_BatchStatus.AutoSize = true;
+            checkBox_BatchStatus.Location = new Point(171, 116);
+            checkBox_BatchStatus.MinimumSize = new Size(50, 10);
+            checkBox_BatchStatus.Name = "checkBox_BatchStatus";
+            checkBox_BatchStatus.Size = new Size(50, 25);
+            checkBox_BatchStatus.TabIndex = 30;
+            checkBox_BatchStatus.Text = "--";
+            checkBox_BatchStatus.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_GasCloseReq
+            // 
+            checkBox_GasCloseReq.Appearance = Appearance.Button;
+            checkBox_GasCloseReq.AutoSize = true;
+            checkBox_GasCloseReq.BackColor = SystemColors.Control;
+            checkBox_GasCloseReq.Location = new Point(73, 117);
+            checkBox_GasCloseReq.MinimumSize = new Size(50, 10);
+            checkBox_GasCloseReq.Name = "checkBox_GasCloseReq";
+            checkBox_GasCloseReq.Size = new Size(50, 25);
+            checkBox_GasCloseReq.TabIndex = 29;
+            checkBox_GasCloseReq.Text = "--";
+            checkBox_GasCloseReq.UseVisualStyleBackColor = false;
+            // 
+            // groupBox9
+            // 
+            groupBox9.Controls.Add(label_Parking_num);
+            groupBox9.Controls.Add(label21);
+            groupBox9.Controls.Add(label16);
+            groupBox9.Controls.Add(textBox_Car2Pos);
+            groupBox9.Controls.Add(textBox_Car1Pos);
+            groupBox9.Controls.Add(textBox_Car2Num);
+            groupBox9.Controls.Add(textBox_Car1Num);
+            groupBox9.Controls.Add(label2);
+            groupBox9.Controls.Add(label4);
+            groupBox9.Controls.Add(label1);
+            groupBox9.Controls.Add(button_SendParking);
+            groupBox9.Controls.Add(label3);
+            groupBox9.Location = new Point(184, 39);
+            groupBox9.Name = "groupBox9";
+            groupBox9.Size = new Size(184, 214);
+            groupBox9.TabIndex = 223;
+            groupBox9.TabStop = false;
+            groupBox9.Text = "주차정보 전달";
+            groupBox9.Visible = false;
+            groupBox9.Enter += groupBox9_Enter;
+            // 
+            // label_Parking_num
+            // 
+            label_Parking_num.AutoSize = true;
+            label_Parking_num.Location = new Point(75, 153);
+            label_Parking_num.Name = "label_Parking_num";
+            label_Parking_num.Size = new Size(17, 15);
+            label_Parking_num.TabIndex = 2;
+            label_Parking_num.Text = "--";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(98, 153);
+            label21.Name = "label21";
+            label21.Size = new Size(19, 15);
+            label21.TabIndex = 2;
+            label21.Text = "대";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(10, 153);
+            label16.Name = "label16";
+            label16.Size = new Size(59, 15);
+            label16.TabIndex = 2;
+            label16.Text = "주차 대수";
+            // 
+            // textBox_Car2Pos
+            // 
+            textBox_Car2Pos.Location = new Point(71, 110);
+            textBox_Car2Pos.Name = "textBox_Car2Pos";
+            textBox_Car2Pos.Size = new Size(108, 23);
+            textBox_Car2Pos.TabIndex = 1;
+            // 
+            // textBox_Car1Pos
+            // 
+            textBox_Car1Pos.Location = new Point(71, 47);
+            textBox_Car1Pos.Name = "textBox_Car1Pos";
+            textBox_Car1Pos.Size = new Size(108, 23);
+            textBox_Car1Pos.TabIndex = 1;
+            // 
+            // textBox_Car2Num
+            // 
+            textBox_Car2Num.Location = new Point(71, 83);
+            textBox_Car2Num.Name = "textBox_Car2Num";
+            textBox_Car2Num.Size = new Size(108, 23);
+            textBox_Car2Num.TabIndex = 1;
+            // 
+            // textBox_Car1Num
+            // 
+            textBox_Car1Num.Location = new Point(71, 20);
+            textBox_Car1Num.Name = "textBox_Car1Num";
+            textBox_Car1Num.Size = new Size(108, 23);
+            textBox_Car1Num.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 114);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 0;
+            label2.Text = "주차위치";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(10, 51);
+            label4.Name = "label4";
+            label4.Size = new Size(55, 15);
+            label4.TabIndex = 0;
+            label4.Text = "주차위치";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(10, 87);
+            label1.Name = "label1";
+            label1.Size = new Size(62, 15);
+            label1.TabIndex = 0;
+            label1.Text = "차량번호2";
+            // 
+            // button_SendParking
+            // 
+            button_SendParking.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            button_SendParking.Location = new Point(14, 178);
+            button_SendParking.Name = "button_SendParking";
+            button_SendParking.Size = new Size(164, 26);
+            button_SendParking.TabIndex = 1;
+            button_SendParking.Text = "보내기";
+            button_SendParking.UseVisualStyleBackColor = true;
+            button_SendParking.Click += Homenet_Tx_Button_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 24);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 15);
+            label3.TabIndex = 0;
+            label3.Text = "차량번호1";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("맑은 고딕", 8F);
+            label19.Location = new Point(1, 146);
+            label19.Name = "label19";
+            label19.Size = new Size(73, 13);
+            label19.TabIndex = 26;
+            label19.Text = "엘콜하강호출";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("맑은 고딕", 8F);
+            label18.Location = new Point(125, 146);
+            label18.Name = "label18";
+            label18.Size = new Size(51, 13);
+            label18.TabIndex = 25;
+            label18.Text = "바이패스";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("맑은 고딕", 8F);
+            label17.Location = new Point(126, 121);
+            label17.Name = "label17";
+            label17.Size = new Size(29, 13);
+            label17.TabIndex = 24;
+            label17.Text = "일괄";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("맑은 고딕", 8F);
+            label14.Location = new Point(1, 121);
+            label14.Name = "label14";
+            label14.Size = new Size(73, 13);
+            label14.TabIndex = 21;
+            label14.Text = "가스잠금요구";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            label13.Location = new Point(9, 96);
+            label13.Name = "label13";
+            label13.Size = new Size(59, 15);
+            label13.TabIndex = 20;
+            label13.Text = "상태 응답";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(comboBoxProtocols);
+            groupBox1.Controls.Add(checkBoxLight);
+            groupBox1.Location = new Point(914, 209);
+            groupBox1.Margin = new Padding(2);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(2);
+            groupBox1.Size = new Size(134, 77);
+            groupBox1.TabIndex = 203;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Protocol";
+            groupBox1.Visible = false;
+            // 
+            // comboBoxProtocols
+            // 
+            comboBoxProtocols.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxProtocols.FormattingEnabled = true;
+            comboBoxProtocols.Items.AddRange(new object[] { "KS", "COMMAX", "CVnet", "현대HT" });
+            comboBoxProtocols.Location = new Point(6, 22);
+            comboBoxProtocols.MinimumSize = new Size(100, 0);
+            comboBoxProtocols.Name = "comboBoxProtocols";
+            comboBoxProtocols.Size = new Size(100, 23);
+            comboBoxProtocols.TabIndex = 132;
+            comboBoxProtocols.KeyDown += Protocols_KeyDown;
+            // 
+            // checkBoxLight
+            // 
+            checkBoxLight.AutoSize = true;
+            checkBoxLight.Checked = true;
+            checkBoxLight.CheckState = CheckState.Checked;
+            checkBoxLight.Location = new Point(4, 50);
+            checkBoxLight.Margin = new Padding(2);
+            checkBoxLight.Name = "checkBoxLight";
+            checkBoxLight.Size = new Size(86, 19);
+            checkBoxLight.TabIndex = 133;
+            checkBoxLight.Text = "생활정보기";
+            checkBoxLight.UseVisualStyleBackColor = true;
+            // 
             // groupBoxExecution
             // 
             groupBoxExecution.Controls.Add(buttonReset);
             groupBoxExecution.Controls.Add(buttonRemove);
             groupBoxExecution.Controls.Add(buttonMake);
-            groupBoxExecution.Location = new Point(5, 78);
+            groupBoxExecution.Location = new Point(913, 82);
             groupBoxExecution.Margin = new Padding(2);
             groupBoxExecution.MinimumSize = new Size(122, 122);
             groupBoxExecution.Name = "groupBoxExecution";
@@ -607,6 +731,7 @@
             groupBoxExecution.TabIndex = 200;
             groupBoxExecution.TabStop = false;
             groupBoxExecution.Text = "Execution";
+            groupBoxExecution.Visible = false;
             // 
             // buttonReset
             // 
@@ -649,7 +774,7 @@
             // 
             groupBoxSwitch.Controls.Add(textBoxSwitchID);
             groupBoxSwitch.Controls.Add(labelSwitchID);
-            groupBoxSwitch.Location = new Point(5, 20);
+            groupBoxSwitch.Location = new Point(913, 24);
             groupBoxSwitch.Margin = new Padding(2);
             groupBoxSwitch.MinimumSize = new Size(128, 56);
             groupBoxSwitch.Name = "groupBoxSwitch";
@@ -658,6 +783,7 @@
             groupBoxSwitch.TabIndex = 110;
             groupBoxSwitch.TabStop = false;
             groupBoxSwitch.Text = "Switch";
+            groupBoxSwitch.Visible = false;
             // 
             // textBoxSwitchID
             // 
@@ -1076,131 +1202,6 @@
             timer1.Interval = 1000;
             timer1.Tick += Timer1_1s_Tick;
             // 
-            // groupBox9
-            // 
-            groupBox9.Controls.Add(label_Parking_num);
-            groupBox9.Controls.Add(label21);
-            groupBox9.Controls.Add(label16);
-            groupBox9.Controls.Add(textBox_Car2Pos);
-            groupBox9.Controls.Add(textBox_Car1Pos);
-            groupBox9.Controls.Add(textBox_Car2Num);
-            groupBox9.Controls.Add(textBox_Car1Num);
-            groupBox9.Controls.Add(label2);
-            groupBox9.Controls.Add(label4);
-            groupBox9.Controls.Add(label1);
-            groupBox9.Controls.Add(button_SendParking);
-            groupBox9.Controls.Add(label3);
-            groupBox9.Location = new Point(1043, 384);
-            groupBox9.Name = "groupBox9";
-            groupBox9.Size = new Size(184, 214);
-            groupBox9.TabIndex = 223;
-            groupBox9.TabStop = false;
-            groupBox9.Text = "주차정보 전달";
-            groupBox9.Visible = false;
-            groupBox9.Enter += groupBox9_Enter;
-            // 
-            // label_Parking_num
-            // 
-            label_Parking_num.AutoSize = true;
-            label_Parking_num.Location = new Point(75, 153);
-            label_Parking_num.Name = "label_Parking_num";
-            label_Parking_num.Size = new Size(17, 15);
-            label_Parking_num.TabIndex = 2;
-            label_Parking_num.Text = "--";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(98, 153);
-            label21.Name = "label21";
-            label21.Size = new Size(19, 15);
-            label21.TabIndex = 2;
-            label21.Text = "대";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(10, 153);
-            label16.Name = "label16";
-            label16.Size = new Size(59, 15);
-            label16.TabIndex = 2;
-            label16.Text = "주차 대수";
-            // 
-            // textBox_Car2Pos
-            // 
-            textBox_Car2Pos.Location = new Point(71, 110);
-            textBox_Car2Pos.Name = "textBox_Car2Pos";
-            textBox_Car2Pos.Size = new Size(108, 23);
-            textBox_Car2Pos.TabIndex = 1;
-            // 
-            // textBox_Car1Pos
-            // 
-            textBox_Car1Pos.Location = new Point(71, 47);
-            textBox_Car1Pos.Name = "textBox_Car1Pos";
-            textBox_Car1Pos.Size = new Size(108, 23);
-            textBox_Car1Pos.TabIndex = 1;
-            // 
-            // textBox_Car2Num
-            // 
-            textBox_Car2Num.Location = new Point(71, 83);
-            textBox_Car2Num.Name = "textBox_Car2Num";
-            textBox_Car2Num.Size = new Size(108, 23);
-            textBox_Car2Num.TabIndex = 1;
-            // 
-            // textBox_Car1Num
-            // 
-            textBox_Car1Num.Location = new Point(71, 20);
-            textBox_Car1Num.Name = "textBox_Car1Num";
-            textBox_Car1Num.Size = new Size(108, 23);
-            textBox_Car1Num.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 114);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 15);
-            label2.TabIndex = 0;
-            label2.Text = "주차위치";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(10, 51);
-            label4.Name = "label4";
-            label4.Size = new Size(55, 15);
-            label4.TabIndex = 0;
-            label4.Text = "주차위치";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(10, 87);
-            label1.Name = "label1";
-            label1.Size = new Size(62, 15);
-            label1.TabIndex = 0;
-            label1.Text = "차량번호2";
-            // 
-            // button_SendParking
-            // 
-            button_SendParking.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            button_SendParking.Location = new Point(14, 178);
-            button_SendParking.Name = "button_SendParking";
-            button_SendParking.Size = new Size(164, 26);
-            button_SendParking.TabIndex = 1;
-            button_SendParking.Text = "보내기";
-            button_SendParking.UseVisualStyleBackColor = true;
-            button_SendParking.Click += Homenet_Tx_Button_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(10, 24);
-            label3.Name = "label3";
-            label3.Size = new Size(62, 15);
-            label3.TabIndex = 0;
-            label3.Text = "차량번호1";
-            // 
             // groupBox11
             // 
             groupBox11.Controls.Add(button_BypassCtrl);
@@ -1495,6 +1496,18 @@
             groupBox12.Text = "Bypass 상태";
             groupBox12.Visible = false;
             // 
+            // button_BypassStat
+            // 
+            button_BypassStat.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            button_BypassStat.Location = new Point(154, 20);
+            button_BypassStat.Name = "button_BypassStat";
+            button_BypassStat.Size = new Size(54, 134);
+            button_BypassStat.TabIndex = 1;
+            button_BypassStat.Text = "상태요청";
+            button_BypassStat.UseVisualStyleBackColor = true;
+            button_BypassStat.Visible = false;
+            button_BypassStat.Click += Homenet_Tx_Button_Click;
+            // 
             // label_volume
             // 
             label_volume.AutoSize = true;
@@ -1621,26 +1634,29 @@
             label26.TabIndex = 3;
             label26.Text = "데이터유형: ";
             // 
-            // button_BypassStat
+            // button_Clear
             // 
-            button_BypassStat.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
-            button_BypassStat.Location = new Point(154, 20);
-            button_BypassStat.Name = "button_BypassStat";
-            button_BypassStat.Size = new Size(54, 134);
-            button_BypassStat.TabIndex = 1;
-            button_BypassStat.Text = "상태요청";
-            button_BypassStat.UseVisualStyleBackColor = true;
-            button_BypassStat.Visible = false;
-            button_BypassStat.Click += Homenet_Tx_Button_Click;
+            button_Clear.Location = new Point(10, 284);
+            button_Clear.Margin = new Padding(2);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(108, 105);
+            button_Clear.TabIndex = 209;
+            button_Clear.Text = "CLEAR";
+            button_Clear.UseVisualStyleBackColor = true;
+            button_Clear.Click += Communication_KS_Click;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1319, 603);
+            ClientSize = new Size(1119, 603);
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox10);
+            Controls.Add(groupBoxExecution);
             Controls.Add(groupBox12);
+            Controls.Add(groupBoxSwitch);
             Controls.Add(groupBox11);
-            Controls.Add(groupBox9);
             Controls.Add(groupBox8);
             Controls.Add(groupBox4);
             Controls.Add(groupBox2);
@@ -1658,14 +1674,16 @@
             KeyDown += Execution_KeyDown;
             Resize += FormMain_Resize;
             groupBoxConfiguration.ResumeLayout(false);
+            groupBoxCommunication.ResumeLayout(false);
+            groupBoxCommunication.PerformLayout();
             groupBox10.ResumeLayout(false);
             groupBox10.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            groupBox9.ResumeLayout(false);
+            groupBox9.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBoxCommunication.ResumeLayout(false);
-            groupBoxCommunication.PerformLayout();
             groupBoxExecution.ResumeLayout(false);
             groupBoxSwitch.ResumeLayout(false);
             groupBoxSwitch.PerformLayout();
@@ -1676,8 +1694,6 @@
             groupBox2.PerformLayout();
             groupBox8.ResumeLayout(false);
             groupBox8.PerformLayout();
-            groupBox9.ResumeLayout(false);
-            groupBox9.PerformLayout();
             groupBox11.ResumeLayout(false);
             groupBox11.PerformLayout();
             groupBox12.ResumeLayout(false);
@@ -1884,5 +1900,6 @@
         private Label label_InOut;
         private Label label_DataType;
         private Button button_BypassStat;
+        private Button button_Clear;
     }
 }

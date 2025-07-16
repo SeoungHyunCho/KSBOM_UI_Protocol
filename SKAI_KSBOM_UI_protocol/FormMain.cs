@@ -162,6 +162,13 @@ namespace SKAI_KSBOM_UI_protocol
                         this.OnDataSend(this.textBoxCommunication.Text);
                     }
                 }
+                else if (sender == this.button_Clear)
+                {
+                    this.richTextBoxLog.Clear();
+
+                    //this.m_TestVectorSystem.GroupLists.Clear();
+                    //this.m_TestVectorSystem.VerLists.Clear();
+                }
 
                 this.GetTestVector();
                 this.GetProtocol();
