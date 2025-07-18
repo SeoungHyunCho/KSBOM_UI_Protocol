@@ -680,7 +680,8 @@ namespace SKAI_KSBOM_UI_protocol
                             int status_light = packet_buf[6] & 0x02;
                             int status_out = packet_buf[6] & 0x04;
                             int status_delivery = packet_buf[6] & 0x08;
-                            int volume = packet_buf[7];
+                            int use_voice = packet_buf[7]&0x10;
+                            int volume = packet_buf[7]&0x0F;
                             int voice_mix = packet_buf[8];
                             int voice_code = packet_buf[9];
 
@@ -696,8 +697,11 @@ namespace SKAI_KSBOM_UI_protocol
                             if (status_delivery == 0x08)    { message += ",택배있음"; }
                             else                            { message += ",택배없음"; }
 
-                            message += " / D2(음량):";
-                            if(volume==0x00)            { message += "정보없음"; }
+                            message += " / D2(음성인식):";
+                            if(use_voice==0x10)         { message += "사용"; }
+                            else                        { message += "미사용"; }
+                            message += "| (음량):";
+                            if (volume==0x00)           { message += "정보없음"; }
                             else if (volume == 0x01)    { message += "음소거"; }
                             else if (volume == 0x02)    { message += "소"; }
                             else if (volume == 0x03)    { message += "중"; }
@@ -712,6 +716,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D4(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code==0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     
@@ -737,6 +751,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D2(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x12:  // 
@@ -760,6 +784,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D2(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x13:  // 
@@ -785,6 +819,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D2(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x14:  // 
@@ -810,6 +854,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D2(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x15:  // 
@@ -884,6 +938,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D7(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x18:  // 
@@ -940,6 +1004,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D6(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x19:  // 
@@ -967,6 +1041,16 @@ namespace SKAI_KSBOM_UI_protocol
 
                             message += " / D3(음성코드):";
                             message += voice_code.ToString();
+                            message += " | (안내):";
+                            if (voice_code == 0) { message += "없음"; }
+                            else if (voice_code == 1) { message += "전등 꺼짐"; }
+                            else if (voice_code == 2) { message += "전등 켜짐"; }
+                            else if (voice_code == 3) { message += "지연소등"; }
+                            else if (voice_code == 4) { message += "가스차단"; }
+                            else if (voice_code == 5) { message += "차단해제안내"; }
+                            else if (voice_code == 6) { message += "엘리베이터 호출"; }
+                            else if (voice_code == 37) { message += "숏 비프"; }
+                            else if (voice_code == 38) { message += "롱 비프"; }
                         }
                         break;
                     case 0x1A:  // 출근/정보화면으로 합침
