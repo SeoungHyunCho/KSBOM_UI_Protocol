@@ -634,6 +634,7 @@ namespace SKAI_KSBOM_UI_protocol
                             if (packet_buf[5] == 0x00) { message += "없음"; }
                             else if (packet_buf[5] == 0x01) { message += "버튼"; }
                             else if (packet_buf[5] == 0x02) { message += "음성"; }
+                            else if (packet_buf[5] == 0x03) { message += "UI초기화"; }
 
                             message += " / D1(버튼):";
                             if (long_touch == 0x10) { message += "롱터치|"; }
