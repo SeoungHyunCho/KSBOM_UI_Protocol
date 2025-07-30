@@ -43,6 +43,7 @@
             comboBoxCommunicationBaudrate = new ComboBox();
             comboBoxCommunicationComPort = new ComboBox();
             buttonCommunicationSend = new Button();
+            button_Clear = new Button();
             groupBox10 = new GroupBox();
             checkBox_Notice = new CheckBox();
             checkBox_Guest = new CheckBox();
@@ -158,7 +159,6 @@
             label29 = new Label();
             label27 = new Label();
             label26 = new Label();
-            button_Clear = new Button();
             groupBoxConfiguration.SuspendLayout();
             groupBoxCommunication.SuspendLayout();
             groupBox10.SuspendLayout();
@@ -183,10 +183,10 @@
             richTextBoxLog.ForeColor = Color.White;
             richTextBoxLog.Location = new Point(153, 3);
             richTextBoxLog.Margin = new Padding(2);
-            richTextBoxLog.MinimumSize = new Size(481, 464);
+            richTextBoxLog.MinimumSize = new Size(300, 350);
             richTextBoxLog.Name = "richTextBoxLog";
             richTextBoxLog.ReadOnly = true;
-            richTextBoxLog.Size = new Size(960, 554);
+            richTextBoxLog.Size = new Size(785, 428);
             richTextBoxLog.TabIndex = 0;
             richTextBoxLog.Text = "";
             richTextBoxLog.KeyDown += Execution_KeyDown;
@@ -201,7 +201,7 @@
             groupBoxConfiguration.MinimumSize = new Size(100, 485);
             groupBoxConfiguration.Name = "groupBoxConfiguration";
             groupBoxConfiguration.Padding = new Padding(2);
-            groupBoxConfiguration.Size = new Size(134, 592);
+            groupBoxConfiguration.Size = new Size(134, 555);
             groupBoxConfiguration.TabIndex = 100;
             groupBoxConfiguration.TabStop = false;
             groupBoxConfiguration.Text = "Configuration";
@@ -333,6 +333,17 @@
             buttonCommunicationSend.Text = "Send";
             buttonCommunicationSend.UseVisualStyleBackColor = true;
             buttonCommunicationSend.Click += Communication_KS_Click;
+            // 
+            // button_Clear
+            // 
+            button_Clear.Location = new Point(10, 284);
+            button_Clear.Margin = new Padding(2);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(108, 105);
+            button_Clear.TabIndex = 209;
+            button_Clear.Text = "CLEAR";
+            button_Clear.UseVisualStyleBackColor = true;
+            button_Clear.Click += Communication_KS_Click;
             // 
             // groupBox10
             // 
@@ -1634,22 +1645,11 @@
             label26.TabIndex = 3;
             label26.Text = "데이터유형: ";
             // 
-            // button_Clear
-            // 
-            button_Clear.Location = new Point(10, 284);
-            button_Clear.Margin = new Padding(2);
-            button_Clear.Name = "button_Clear";
-            button_Clear.Size = new Size(108, 105);
-            button_Clear.TabIndex = 209;
-            button_Clear.Text = "CLEAR";
-            button_Clear.UseVisualStyleBackColor = true;
-            button_Clear.Click += Communication_KS_Click;
-            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1119, 603);
+            ClientSize = new Size(944, 477);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox10);
@@ -1666,7 +1666,7 @@
             Controls.Add(groupBoxConfiguration);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
-            MinimumSize = new Size(1022, 548);
+            MinimumSize = new Size(800, 400);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterParent;
             Text = "SKAI_다기능_Tester";
