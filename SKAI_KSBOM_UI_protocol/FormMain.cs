@@ -677,10 +677,18 @@ namespace SKAI_KSBOM_UI_protocol
                     case 0x01:  // 
                         {
                             msg_cmd = "[상태전달]";
+
                             int status_gas = packet_buf[6] & 0x01;
+                            /*
                             int status_light = packet_buf[6] & 0x02;
                             int status_out = packet_buf[6] & 0x04;
                             int status_delivery = packet_buf[6] & 0x08;
+                            */
+                            int status_light = packet_buf[6] & 0x06;
+                            int status_out = packet_buf[6] & 0x08;
+                            int status_delivery = packet_buf[6] & 0x10;
+                            int status_elv = packet_buf[6] & 0x20;
+
                             int use_voice = packet_buf[7]&0x10;
                             int volume = packet_buf[7]&0x0F;
                             int voice_mix = packet_buf[8];
@@ -691,12 +699,23 @@ namespace SKAI_KSBOM_UI_protocol
                             message += " / D1(상태):";
                             if (status_gas == 0x01)     { message += "가스열림"; }
                             else                        { message += "가스차단"; }
+                            /*
                             if (status_light == 0x02)   { message += ",일괄점등"; }
                             else                        { message += ",일괄소등"; }
                             if (status_out == 0x04)     { message += ",귀가"; }
                             else                        { message += ",외출"; }
                             if (status_delivery == 0x08)    { message += ",택배있음"; }
                             else                            { message += ",택배없음"; }
+                            */
+                            if (status_light == 0x00) { message += ",일괄소등"; }
+                            else if (status_light == 0x02) { message += ",일괄점등"; }
+                            else if (status_light == 0x04) { message += ",지연소등"; }
+                            if (status_out == 0x08) { message += ",귀가"; }
+                            else { message += ",외출"; }
+                            if (status_delivery == 0x10) { message += ",택배있음"; }
+                            else { message += ",택배없음"; }
+                            if(status_elv == 0x20) { message += ",엘콜 호출중"; }
+                            else { message += ",엘콜 평상시"; }
 
                             message += " / D2(음성인식):";
                             if(use_voice==0x10)         { message += "사용"; }
